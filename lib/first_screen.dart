@@ -1,7 +1,6 @@
+import 'package:demo_inherited/list_view.dart';
 import 'package:demo_inherited/provider/todo_inherited.dart';
 import 'package:flutter/material.dart';
-
-import 'second_screen.dart';
 import 'todo.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -28,7 +27,6 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final todos = TodoInherited.of(context).data.todos;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,18 +35,7 @@ class _FirstScreenState extends State<FirstScreen> {
             onEditingComplete: _createTodo,
             controller: _controller,
           ),
-          Expanded(
-              child: ListView.builder(
-                  itemCount: todos.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SecondScreen())),
-                      title: Text(todos[index].name),
-                    );
-                  }))
+          const Expanded(child: ListViewWidget())
         ],
       ),
     );
