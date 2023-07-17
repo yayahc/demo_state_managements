@@ -1,4 +1,4 @@
-import 'package:demo_inherited/provider/todo_provider.dart';
+import 'package:demo_state_managements/provider/todo_provider.dart';
 import 'package:flutter/material.dart';
 
 class TodoInherited extends InheritedWidget {

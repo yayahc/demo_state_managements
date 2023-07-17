@@ -1,6 +1,7 @@
-import 'package:demo_inherited/list_view.dart';
-import 'package:demo_inherited/provider/todo_inherited.dart';
+import 'package:demo_state_managements/cubit/todo_cubit.dart';
+import 'package:demo_state_managements/list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'todo.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -42,9 +43,8 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   void _createTodo() {
-    final todoProvider = TodoInherited.of(context).data;
-    final newTodo = Todo(todoProvider.todos.length + 1, _controller.text);
-    todoProvider.createTodo(newTodo);
+    final todosCubit = BlocProvider.of<CubitProvider>(context);
+    todosCubit.addTodo(Todo(todosCubit.state.length + 1, _controller.text));
     _controller.clear();
   }
 }

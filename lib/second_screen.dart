@@ -1,4 +1,4 @@
-import 'package:demo_inherited/list_view.dart';
+import 'package:demo_state_managements/list_view.dart';
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {

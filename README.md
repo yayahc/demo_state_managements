@@ -1,4 +1,4 @@
-# demo_inherited
+# demo_state_managements
 
 A new Flutter project.
 
