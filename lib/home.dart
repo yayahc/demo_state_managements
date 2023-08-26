@@ -47,12 +47,15 @@ class _HomeState extends State<Home> {
                   title: Text(state[index].content),
                 );
               });
-            })
+            }),
           ],
         ));
   }
 
   void createTodo() {
-    final todosCubit = BlocProvider.of(context);
+    final todosCubit = BlocProvider.of<CubitProvder>(context);
+    todosCubit.createTodo(
+        Todo(id: todosCubit.state.length + 1, content: _controller.text));
+    _controller.clear();
   }
 }
