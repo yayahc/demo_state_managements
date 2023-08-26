@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final todosCubit = BlocProvider.of<CubitProvder>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text("Demo Cubit"),
@@ -40,20 +41,25 @@ class _HomeState extends State<Home> {
                 content = value;
               }),
             ),
-            ElevatedButton(onPressed: createTodo, child: const Text("Create")),
-            BlocBuilder<CubitProvder, List<Todo>>(builder: (_, state) {
-              return ListView.builder(itemBuilder: (_, index) {
-                return ListTile(
-                  title: Text(state[index].content),
-                );
-              });
-            }),
+            ElevatedButton(
+                onPressed: () => createTodo(todosCubit),
+                child: const Text("Create")),
+            Expanded(
+              child: BlocBuilder<CubitProvder, List<Todo>>(builder: (_, state) {
+                return ListView.builder(
+                    itemCount: todosCubit.state.length,
+                    itemBuilder: (_, index) {
+                      return ListTile(
+                        title: Text(state[index].content),
+                      );
+                    });
+              }),
+            )
           ],
         ));
   }
 
-  void createTodo() {
-    final todosCubit = BlocProvider.of<CubitProvder>(context);
+  void createTodo(CubitProvder todosCubit) {
     todosCubit.createTodo(
         Todo(id: todosCubit.state.length + 1, content: _controller.text));
     _controller.clear();

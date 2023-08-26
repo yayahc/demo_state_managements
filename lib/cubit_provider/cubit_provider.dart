@@ -5,13 +5,12 @@ class CubitProvder extends Cubit<List<Todo>> {
   CubitProvder(super.initialState);
 
   void createTodo(Todo todo) {
-    final todos = state.add(todo) as List<Todo>;
+    final todos = [...state, todo].toList();
     emit(todos);
   }
 
   void deleteTodo(int id) {
-    final newTodos =
-        state.removeWhere((element) => element.id == id) as List<Todo>;
+    final newTodos = state.removeWhere((element) => element.id == id);
     emit(newTodos);
   }
 }
