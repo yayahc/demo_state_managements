@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
     final todosCubit = BlocProvider.of<CubitProvder>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Demo Cubit"),
+          title: const Text("Demo of Cubit"),
         ),
         body: Column(
           children: [
