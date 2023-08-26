@@ -1,5 +1,5 @@
 class Todo {
-  final int id;
-  final String name;
-  Todo(this.id, this.name);
+  int id;
+  String content;
+  Todo(this.id, this.content);
 }
