@@ -37,7 +37,8 @@ class _HomeState extends State<Home> {
         body: Column(
           children: [
             TextFormField(
-              onChanged: (value) => setState(() {
+              controller: _controller,
+              onChanged: (String value) => setState(() {
                 content = value;
               }),
             ),
